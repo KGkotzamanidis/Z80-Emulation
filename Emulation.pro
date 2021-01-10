@@ -4,11 +4,12 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    bitutils.cpp \
+    bus.cpp \
     cpu.cpp \
-    registers.cpp
+    init.cpp \
+    mem.cpp
 
 HEADERS += \
-    bitutils.h \
+    bus.h \
     cpu.h \
-    registers.h
+    mem.h
