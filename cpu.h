@@ -39,6 +39,26 @@ class CPU{
 
     void connctCPU(BUS *n);
     private:
+    uint8_t fetched=0x00,opcodes=0x00,cycles=0;
+    uint16_t address_abs=0x0000,address_rel=0x0000;
+    uint32_t clock_count;
+    /*
+     * struct Instruction_CPU:
+     * Μια εντολη του cpu εχει το Ονομα της εντολης, τα Bit που συνεργαζονται η διευθυνση και ποσους κυκλου
+     * θα χρειαστει.
+     */
+    struct Instruction_CPU{
+        std::string name;
+        uint8_t (CPU::*operate)     (void) = nullptr;
+        uint8_t (CPU::*addressmode) (void) = nullptr;
+        uint8_t cycles=0;
+    };
+    /*
+     * Για να δεις το table πανε εδω:
+     * https://pastraiser.com/cpu/i8080/i8080_opcodes.html
+     */
+    std::vector<Instruction_CPU> _lookupTable;
+    uint8_t fetch();
     /*
      * Λειτουργια διευθυνσεων
      * Βλεπε σελιδα 34.
