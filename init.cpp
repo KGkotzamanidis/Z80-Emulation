@@ -6,5 +6,7 @@
 
 using namespace std;
 int main(){
+    CPU cpu;
+    cpu.printSpect();
     return 0;
 }
